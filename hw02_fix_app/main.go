@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fixme_my_friend/hw02_fix_app/printer"
-	"github.com/fixme_my_friend/hw02_fix_app/reader"
-	"github.com/fixme_my_friend/hw02_fix_app/types"
+	"github.com/goodelias/otusgo-basic/hw02_fix_app/printer"
+	"github.com/goodelias/otusgo-basic/hw02_fix_app/reader"
+	"github.com/goodelias/otusgo-basic/hw02_fix_app/types"
 )
 
 var ErrBadInput = errors.New("unexpected newline")
