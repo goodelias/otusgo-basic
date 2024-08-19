@@ -27,7 +27,7 @@ func main() {
 	var err error
 	var staff []types.Employee
 
-	staff, err = reader.ReadJSON(path, -1)
+	staff, err = reader.ReadJSON(path)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
