@@ -39,15 +39,15 @@ func (b *BookBuilder) Build() *Book {
 
 // GETTERS
 
-func (b *Book) getId() int {
-	return b.year
+func (b *Book) GetId() int {
+	return b.id
 }
 
-func (b *Book) getTitle() string {
+func (b *Book) GetTitle() string {
 	return b.title
 }
 
-func (b *Book) getAuthor() string {
+func (b *Book) GetAuthor() string {
 	return b.author
 }
 
