@@ -21,12 +21,12 @@ func NewBookComparator(mode CompareMode) *BookComparator {
 func (c BookComparator) Compare(book1, book2 *entity.Book) bool {
 	switch c.mode {
 	case CompareModeYear:
-		return book1.GetYear() > book2.GetYear()
+		return book1.Year() > book2.Year()
 	case CompareModeSize:
-		return book1.GetSize() > book2.GetSize()
+		return book1.Size() > book2.Size()
 	case CompareModeRate:
-		return book1.GetRate() > book2.GetRate()
+		return book1.Rate() > book2.Rate()
 	default:
-		return book1.GetYear() > book2.GetYear()
+		return book1.Year() > book2.Year()
 	}
 }
