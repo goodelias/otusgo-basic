@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/goodelias/otusgo-basic/hw04_struct_comparator/component"
 	"github.com/goodelias/otusgo-basic/hw04_struct_comparator/entity"
 )
@@ -29,5 +30,4 @@ func main() {
 	fmt.Println(bc1.Compare(book1, book2))
 	book1.SetRate(4.8)
 	fmt.Println(bc1.Compare(book1, book2))
-
 }
