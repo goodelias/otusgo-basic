@@ -39,7 +39,7 @@ func (b *BookBuilder) Build() *Book {
 
 // GETTERS
 
-func (b *Book) GetId() int {
+func (b *Book) GetID() int {
 	return b.id
 }
 
@@ -65,7 +65,7 @@ func (b *Book) GetRate() float64 {
 
 // SETTERS
 
-func (b *BookBuilder) SetId(id int) *BookBuilder {
+func (b *BookBuilder) SetID(id int) *BookBuilder {
 	b.id = id
 	return b
 }

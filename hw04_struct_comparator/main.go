@@ -10,7 +10,7 @@ import (
 func main() {
 	book1 := entity.NewBookBuilder().
 		SetRate(4.5).
-		SetId(1).
+		SetID(1).
 		SetAuthor("Ilya Chepkin").
 		SetSize(300).
 		SetTitle("Go Basic").
@@ -18,7 +18,7 @@ func main() {
 		Build()
 
 	book2 := entity.NewBookBuilder().
-		SetId(2).
+		SetID(2).
 		SetTitle("Go Professional").
 		SetAuthor("Ilya Chepkin").
 		SetYear(2017).
