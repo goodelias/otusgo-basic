@@ -58,6 +58,7 @@ func TestReadJSON(t *testing.T) {
 			got, err := ReadJSON(test.filePath)
 			if test.wantErr == true {
 				require.Error(t, err)
+				return
 			}
 			assert.NoError(t, err)
 			assert.Equal(t, test.want, got)
