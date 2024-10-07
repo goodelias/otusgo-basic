@@ -25,27 +25,10 @@ func TestChess(t *testing.T) {
 			want:    "# # \n # #\n# # \n # #\n",
 			wantErr: nil,
 		},
-		{
-			name:    "with too small size",
-			size:    -1,
-			want:    "",
-			wantErr: errInvalidSize,
-		},
-		{
-			name:    "with too large size",
-			size:    101,
-			want:    "",
-			wantErr: errInvalidSize,
-		},
 	}
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
-			got, err := displayBoard(test.size)
-			if test.wantErr != nil {
-				assert.Error(t, err)
-				assert.Equal(t, "", got)
-				assert.EqualError(t, err, test.wantErr.Error())
-			}
+			got := displayBoard(test.size)
 			assert.Equal(t, test.want, got)
 		})
 	}

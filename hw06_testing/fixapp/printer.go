@@ -13,24 +13,12 @@ var (
 )
 
 func PrintStaff(staff []Employee) (string, error) {
-	// Check if the slice is empty
-	if len(staff) == 0 {
-		return "", fmt.Errorf("%w: %v", ErrEmptyStaff, staff)
-	}
-
-	// Remove duplicate employees using a map for uniqueness
-	uniqueEmployees := make(map[string]Employee)
+	// Create a slice of employees for sorting
+	employees := make([]Employee, 0, len(staff))
 	for _, emp := range staff {
 		if emp.UserID <= 0 || emp.Age <= 0 || emp.Name == "" || emp.DepartmentID <= 0 {
 			return "", fmt.Errorf("%w: %v", ErrZeroOrNegativeField, emp)
 		}
-		key := fmt.Sprintf("%d-%d-%s-%d", emp.UserID, emp.Age, emp.Name, emp.DepartmentID)
-		uniqueEmployees[key] = emp
-	}
-
-	// Create a slice of employees for sorting
-	employees := make([]Employee, 0, len(uniqueEmployees))
-	for _, emp := range uniqueEmployees {
 		employees = append(employees, emp)
 	}
 

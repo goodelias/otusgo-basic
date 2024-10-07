@@ -28,7 +28,13 @@ func TestPrintStaff(t *testing.T) {
 			name:    "with no employees",
 			staff:   []Employee{},
 			want:    "",
-			wantErr: ErrEmptyStaff,
+			wantErr: nil,
+		},
+		{
+			name:    "with nil employee",
+			staff:   nil,
+			want:    "",
+			wantErr: nil,
 		},
 		{
 			name: "with single employee",
@@ -47,12 +53,6 @@ func TestPrintStaff(t *testing.T) {
 			wantErr: ErrZeroOrNegativeField,
 		},
 		{
-			name:    "with nil employee",
-			staff:   nil,
-			want:    "",
-			wantErr: ErrEmptyStaff,
-		},
-		{
 			name: "with duplicate employees",
 			staff: []Employee{
 				NewEmployee(1, 23, "Ilya", 11),
@@ -60,6 +60,7 @@ func TestPrintStaff(t *testing.T) {
 				NewEmployee(1, 23, "Ilya", 11),
 			},
 			want: "User ID: 1; Age: 23; Name: Ilya; Department ID: 11; \n" +
+				"User ID: 1; Age: 23; Name: Ilya; Department ID: 11; \n" +
 				"User ID: 2; Age: 30; Name: Alec; Department ID: 12; \n",
 			wantErr: nil,
 		},

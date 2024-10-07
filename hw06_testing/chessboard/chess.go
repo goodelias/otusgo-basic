@@ -1,11 +1,9 @@
 package chessboard
 
 import (
-	"errors"
 	"fmt"
+	"strings"
 )
-
-var errInvalidSize = errors.New("size must be between 0 and 100")
 
 func GetSize(prompt string) int {
 	var size int
@@ -20,20 +18,17 @@ func GetSize(prompt string) int {
 	return size
 }
 
-func displayBoard(size int) (string, error) {
-	var board string
-	if size < 0 || size > 100 {
-		return "", errInvalidSize
-	}
+func displayBoard(size int) string {
+	var s strings.Builder
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
 			if (i+j)%2 == 0 {
-				board += "#"
+				s.WriteString("#")
 				continue
 			}
-			board += " "
+			s.WriteString(" ")
 		}
-		board += "\n"
+		s.WriteString("\n")
 	}
-	return board, nil
+	return s.String()
 }
