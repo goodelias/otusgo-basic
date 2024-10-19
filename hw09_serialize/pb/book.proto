@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package entity;
+
+message Book {
+  int32 id = 1;
+  string title = 2;
+  string author = 3;
+  int32 year = 4;
+  int32 size = 5;
+  double rate = 6;
+}
+
+option go_package = "github.com/goodelias/otusgo-basic/hw09_serialize/entity;entity";
