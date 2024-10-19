@@ -2,13 +2,14 @@ package entity
 
 import (
 	"encoding/json"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestBook_MarshalJSON(t *testing.T) {
 	book := Book{
-		Id:     1,
+		ID:     1,
 		Title:  "Go Basic",
 		Author: "Alan Donovan",
 		Year:   2015,
@@ -18,7 +19,6 @@ func TestBook_MarshalJSON(t *testing.T) {
 
 	want := `{"id":1,"title":"Go Basic","author":"Alan Donovan","year":2015,"size":315,"rate":4.5}`
 	data, err := json.Marshal(book)
-
 	if err != nil {
 		t.Fatalf("Marshaling book %v", err)
 	}
@@ -29,7 +29,7 @@ func TestBook_MarshalJSON(t *testing.T) {
 func TestBook_UnmarshalJSON(t *testing.T) {
 	data := `{"id":1,"title":"Go Basic","author":"Alan Donovan","year":2015,"size":315,"rate":4.5}`
 	want := Book{
-		Id:     1,
+		ID:     1,
 		Title:  "Go Basic",
 		Author: "Alan Donovan",
 		Year:   2015,

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package entity;
+package pb;
 
 message Book {
   int32 id = 1;
@@ -11,4 +11,4 @@ message Book {
   double rate = 6;
 }
 
-option go_package = "github.com/goodelias/otusgo-basic/hw09_serialize/entity;entity";
+option go_package = "github.com/goodelias/otusgo-basic/hw09_serialize/pb";

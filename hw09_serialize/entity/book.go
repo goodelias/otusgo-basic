@@ -3,7 +3,7 @@ package entity
 import "encoding/json"
 
 type Book struct {
-	Id     int     `json:"id"`
+	ID     int     `json:"id"`
 	Title  string  `json:"title"`
 	Author string  `json:"author"`
 	Year   int     `json:"year"`

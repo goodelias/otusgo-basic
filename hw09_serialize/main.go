@@ -11,7 +11,7 @@ import (
 
 func main() {
 	book := entity.Book{
-		Id:     1,
+		ID:     1,
 		Title:  "Go Basic",
 		Author: "Alan Donovan",
 		Year:   2015,
@@ -24,7 +24,7 @@ func main() {
 		log.Println("Error marshaling Book to JSON:", err)
 		return
 	}
-	log.Println("JSON output:", string(data))
+	log.Println("JSON output:", data)
 
 	var book2 entity.Book
 	err = json.Unmarshal(data, &book2)
