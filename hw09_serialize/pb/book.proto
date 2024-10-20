@@ -11,4 +11,8 @@ message Book {
   double rate = 6;
 }
 
+message BookList {
+  repeated Book books = 1;
+}
+
 option go_package = "github.com/goodelias/otusgo-basic/hw09_serialize/pb";
