@@ -26,11 +26,11 @@ func GenerateNumbers(ch chan<- int) {
 	}
 }
 
-func CalculateAverage(ch <-chan int) {
+func CalculateAverage(numChan <-chan int, avrChan chan<- float32) {
 	numbers := make([]int, 0, 10)
 	count := 0
 
-	for num := range ch {
+	for num := range numChan {
 		numbers = append(numbers, num)
 		count++
 
@@ -39,10 +39,11 @@ func CalculateAverage(ch <-chan int) {
 			for _, n := range numbers {
 				sum += n
 			}
-			average := float32(sum / 10.00)
-			fmt.Printf("The arithmetic mean for the last 10 numbers is %.2f\n", average)
+			average := float32(sum) / 10.0
+			avrChan <- average
 			numbers = numbers[:0]
 			count = 0
 		}
 	}
+	close(avrChan)
 }

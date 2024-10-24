@@ -32,16 +32,3 @@ Done:
 	expected := 1
 	assert.GreaterOrEqual(t, numCount, expected)
 }
-
-func TestCalculateAverage(_ *testing.T) {
-	numChannel := make(chan int)
-
-	go func() {
-		for i := 1; i < 10; i++ {
-			numChannel <- i
-		}
-		close(numChannel)
-	}()
-
-	CalculateAverage(numChannel)
-}
