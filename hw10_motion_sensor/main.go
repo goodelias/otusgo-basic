@@ -2,25 +2,41 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"math/rand"
+	"time"
 
 	"github.com/goodelias/otusgo-basic/hw10_motion_sensor/calc"
 )
 
 func main() {
-	var wg sync.WaitGroup
-	wg.Add(1)
-	numChannel := make(chan int)
-	avrChan := make(chan float32)
-	go calc.GenerateNumbers(numChannel)
-	go calc.CalculateAverage(numChannel, avrChan)
+	in := make(chan int)
+	out := make(chan float32)
 
+	// goroutine for generating numbers
 	go func() {
-		for average := range avrChan {
-			fmt.Printf("The arithmetic mean for the last 10 numbers is %.2f\n", average)
+		timer := time.NewTimer(time.Minute)
+		ticker := time.NewTicker(time.Second)
+		defer ticker.Stop()
+
+		for {
+			select {
+			case <-ticker.C:
+				num := rand.Intn(10) //#nosec
+				fmt.Printf("Generated new number: %d\n", num)
+				in <- num
+			case <-timer.C:
+				close(in)
+				fmt.Println("Time is up. Generation stopped")
+				return
+			}
 		}
-		wg.Done()
 	}()
 
-	wg.Wait()
+	go calc.CalculateAverage(in, out)
+
+	func() {
+		for average := range out {
+			fmt.Printf("The arithmetic mean for the last numbers is %.2f\n", average)
+		}
+	}()
 }
