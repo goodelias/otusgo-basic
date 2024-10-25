@@ -23,7 +23,11 @@ func main() {
 			case <-ticker.C:
 				num := rand.Intn(10) //#nosec
 				fmt.Printf("Generated new number: %d\n", num)
-				in <- num
+				select {
+				case in <- num:
+				case <-time.After(500 * time.Millisecond):
+				}
+
 			case <-timer.C:
 				close(in)
 				fmt.Println("Time is up. Generation stopped")
@@ -31,7 +35,6 @@ func main() {
 			}
 		}
 	}()
-
 	go calc.CalculateAverage(in, out)
 
 	func() {
