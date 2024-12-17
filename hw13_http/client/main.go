@@ -4,7 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 )
@@ -27,7 +27,7 @@ func sendRequest(method, url string) ([]byte, error) {
 	defer response.Body.Close()
 
 	// Чтение тела ответа
-	body, err := ioutil.ReadAll(response.Body)
+	body, err := io.ReadAll(response.Body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read %s response body: %w", method, err)
 	}
