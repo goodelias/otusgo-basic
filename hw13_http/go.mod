@@ -1,3 +1,3 @@
-module github.com/fixme_my_friend/hw13_http
+module github.com/goodelias/otusgo-basic/hw13_http
 
 go 1.20
